@@ -1,6 +1,6 @@
 
     <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="150" cy="100" r="80" fill="Black" />
+      <polygon points="150,20 220,180 80,180" fill="Green" />
       <text x="150" y="125" font-size="48" text-anchor="middle" fill="Blue">
         WGM
       </text>
