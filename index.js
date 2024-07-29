@@ -1,19 +1,20 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const { Circle, Triangle, Square } = require('./Lib/shapes');
 
 // Function to create the SVG string
 const generateSVG = (text, textColor, shape, shapeColor) => {
-  let shapeSVG;
+  let shapeInstance;
 
   switch (shape) {
     case 'circle':
-      shapeSVG = `<circle cx="150" cy="100" r="80" fill="${shapeColor}" />`;
+      shapeInstance = new Circle(shapeColor);
       break;
     case 'triangle':
-      shapeSVG = `<polygon points="150,20 220,180 80,180" fill="${shapeColor}" />`;
+      shapeInstance = new Triangle(shapeColor);
       break;
     case 'square':
-      shapeSVG = `<rect x="70" y="20" width="160" height="160" fill="${shapeColor}" />`;
+      shapeInstance = new Square(shapeColor);
       break;
     default:
       throw new Error('Invalid shape');
@@ -21,7 +22,7 @@ const generateSVG = (text, textColor, shape, shapeColor) => {
 
   return `
     <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-      ${shapeSVG}
+      ${shapeInstance.render()}
       <text x="150" y="125" font-size="48" text-anchor="middle" fill="${textColor}">
         ${text}
       </text>
