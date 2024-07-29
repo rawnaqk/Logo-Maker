@@ -63,7 +63,7 @@ inquirer
     const svgContent = generateSVG(text, textColor, shape, shapeColor);
 
     // Write SVG to file
-    fs.writeFile('logo.svg', svgContent, err => {
+    fs.writeFile('./Examples/logo.svg', svgContent, err => {
       if (err) {
         console.error('Error writing file:', err);
       } else {
