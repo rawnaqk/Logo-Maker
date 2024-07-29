@@ -30,6 +30,12 @@ const generateSVG = (text, textColor, shape, shapeColor) => {
   `;
 };
 
+// Function to create a unique filename based on timestamp
+const createUniqueFilename = () => {
+  const timestamp = new Date().toISOString().replace(/[-:.]/g, '');
+  return `examples/logo_${timestamp}.svg`;
+};
+
 // Inquirer prompts
 inquirer
   .prompt([
@@ -62,12 +68,14 @@ inquirer
     // Generate SVG content
     const svgContent = generateSVG(text, textColor, shape, shapeColor);
 
+    const filename = createUniqueFilename();
+
     // Write SVG to file
-    fs.writeFile('./Examples/logo.svg', svgContent, err => {
+    fs.writeFile(filename, svgContent, err => {
       if (err) {
         console.error('Error writing file:', err);
       } else {
-        console.log('Generated logo.svg');
+        console.log('Generated ${filename}');
       }
     });
   });
